@@ -20,6 +20,8 @@
     	
     	<mapping class="pojo.Player"/>
     	<mapping class="pojo.Pet"/>
+    	<mapping class="many2one.People"/>
+    	<mapping class="many2one.Room"/>
     	
     </session-factory>
 </hibernate-configuration>
