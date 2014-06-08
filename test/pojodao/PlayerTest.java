@@ -12,6 +12,7 @@ import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import pojo.Pet;
 import pojo.Player;
 import type.Sex;
 
@@ -39,6 +40,18 @@ public class PlayerTest {
 		session.save(new Player("奥茨小朋友", "xiao", Sex.Girl));
 		
 		
+		session.getTransaction().commit();
+	}
+	
+	@Test
+	public void testPet(){
+		Session session = sf.getCurrentSession();
+		session.beginTransaction();
+		Player player = new Player("带宠物的奥茨", "juan", Sex.Boy);
+		Pet pet = new Pet("小王","治疗");
+		session.save(pet);
+		player.setPet(pet);
+		session.save(player);
 		session.getTransaction().commit();
 	}
 

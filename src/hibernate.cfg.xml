@@ -19,6 +19,7 @@
     	
     	
     	<mapping class="pojo.Player"/>
+    	<mapping class="pojo.Pet"/>
     	
     </session-factory>
 </hibernate-configuration>
