@@ -79,19 +79,23 @@ public class PlayerTest {
 		People p = new People();
 		People p2 = new People();
 		Room r = new Room();
-//		session.save(r);
-//		p.setName("奥茨人");
-//		p.setRoom(r);
-//		p2.setName("女仆");
-//		p2.setRoom(r);
-//		session.save(p);
-//		session.save(p2);
+		session.save(r);
+		p.setName("奥茨人");
+		p.setRoom(r);
+		p2.setName("女仆");
+		p2.setRoom(r);
+		session.save(p);
+		session.save(p2);
 		
 	}
 	@Test 
 	public void testOne2Many(){
+//		this.before();
 		Room room = (Room) session.get(Room.class, 1);
-		System.out.println(room.getPeoples());
+//		this.after();
+     	System.out.println(room.getPeoples().get(1).getName());
+//     	People p = (People)session.get(People.class, 1);
+//     	System.out.println(p);
 		
 	}
 	

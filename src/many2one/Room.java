@@ -21,10 +21,14 @@ public class Room {
 	public int getId() {
 		return id;
 	}
-	@OneToMany
-	@JoinColumn(name="room_id")
+	@OneToMany(mappedBy="room")//由People类的room属性去匹配
+//	@JoinColumn(name="room_id")
 	public List<People> getPeoples() {
 		return peoples;
+	}
+	@Override
+	public String toString() {
+		return "Room [id=" + id + ", peoples=" + peoples + "]";
 	}
 	public void setId(int id) {
 		this.id = id;

@@ -10,7 +10,7 @@ public class People {
 
 	private int id;
 	private String name;
-//	private Room room;
+	private Room room;
 	public People() {
 		super();
 	}
@@ -22,19 +22,23 @@ public class People {
 	public String getName() {
 		return name;
 	}
-//	@ManyToOne
-//	public Room getRoom() {
-//		return room;
-//	}
+	@ManyToOne
+	public Room getRoom() {
+		return room;
+	}
+	@Override
+	public String toString() {
+		return "People [id=" + id + ", name=" + name + ", room=" + room + "]";
+	}
 	public void setId(int id) {
 		this.id = id;
 	}
 	public void setName(String name) {
 		this.name = name;
 	}
-//	public void setRoom(Room room) {
-//		this.room = room;
-//	}
+	public void setRoom(Room room) {
+		this.room = room;
+	}
 	
 	
 }
