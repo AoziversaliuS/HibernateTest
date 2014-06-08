@@ -14,6 +14,7 @@ import org.junit.Test;
 
 import pojo.Pet;
 import pojo.Player;
+import pojo.Weapon;
 import type.Sex;
 
 public class PlayerTest {
@@ -52,6 +53,31 @@ public class PlayerTest {
 		session.save(pet);
 		player.setPet(pet);
 		session.save(player);
+		session.getTransaction().commit();
+	}
+	
+	@Test
+	public void testLoad(){
+		Session session = sf.getCurrentSession();
+		session.beginTransaction();
+//		Player p =  (Player)session.get(Player.class, 1);
+		Pet pet = (Pet)session.load(Pet.class, 1);
+		session.getTransaction().commit();
+		
+//		System.out.println("pet="+pet.getMaster());
+	}
+	@Test
+	public void testGroupMapping(){
+		Session session = sf.getCurrentSession();
+		session.beginTransaction();
+		
+		Player player = new Player("带武器的奥茨", "juan", Sex.Boy);
+		Pet pet = new Pet("小王","治疗");
+		session.save(pet);
+		player.setPet(pet);
+		player.setWeapon(new Weapon("神剑", 100));
+		session.save(player);
+		
 		session.getTransaction().commit();
 	}
 
