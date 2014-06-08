@@ -1,6 +1,12 @@
 package pojodao;
 
 import static org.junit.Assert.*;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import many2many.Boy;
+import many2many.Girl;
 import many2one.People;
 import many2one.Room;
 
@@ -97,6 +103,23 @@ public class PlayerTest {
 //     	People p = (People)session.get(People.class, 1);
 //     	System.out.println(p);
 		
+	}
+	
+	@Test
+	public void testManyToMany(){
+		List<Boy> boys = new ArrayList<Boy>();
+		boys.add(new Boy("boyA"));
+		boys.add(new Boy("boyB"));
+		boys.add(new Boy("boyC"));
+		for(Boy b:boys){
+			session.save(b);
+		}
+		session.save(new Girl("girlA", boys));
+	}
+	@Test
+	public void testManyToManyA(){
+		Girl girl = (Girl)session.get(Girl.class, 1);
+		System.out.println(girl.getBoyFriends());
 	}
 	
 	@Before
