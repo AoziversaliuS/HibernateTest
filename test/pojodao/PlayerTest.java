@@ -36,15 +36,6 @@ public class PlayerTest {
 	public static void release(){
 		sf.close();
 	}
-	@Before
-	public void before(){
-		session  = sf.getCurrentSession();
-		session.beginTransaction();
-	}
-	@After
-	public void after(){
-		session.getTransaction().commit();
-	}
 	
 	@Test
 	public void testSave() {
@@ -88,14 +79,30 @@ public class PlayerTest {
 		People p = new People();
 		People p2 = new People();
 		Room r = new Room();
-		session.save(r);
-		p.setName("奥茨人");
-		p.setRoom(r);
-		p2.setName("女仆");
-		p2.setRoom(r);
-		session.save(p);
-		session.save(p2);
+//		session.save(r);
+//		p.setName("奥茨人");
+//		p.setRoom(r);
+//		p2.setName("女仆");
+//		p2.setRoom(r);
+//		session.save(p);
+//		session.save(p2);
 		
+	}
+	@Test 
+	public void testOne2Many(){
+		Room room = (Room) session.get(Room.class, 1);
+		System.out.println(room.getPeoples());
+		
+	}
+	
+	@Before
+	public void before(){
+		session  = sf.getCurrentSession();
+		session.beginTransaction();
+	}
+	@After
+	public void after(){
+		session.getTransaction().commit();
 	}
 
 }
