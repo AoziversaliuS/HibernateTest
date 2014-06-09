@@ -1,5 +1,8 @@
 package pojodao;
 
+import javax.persistence.FetchType;
+import javax.persistence.ManyToOne;
+
 import many2one.People;
 import many2one.Room;
 
@@ -27,6 +30,12 @@ public class CRUDTest {
 		p.setName("²âÊÔ¼¶Áª±£´æ");
 //		session.save(p);
 		session.persist(p);
+	}
+	@Test
+	public void testGet(){
+		Room r = (Room) session.get(Room.class, 2);
+		System.out.println(r.getPeoples().get(0).getName());
+		
 	}
 	@Test
 	public void testDelete(){
