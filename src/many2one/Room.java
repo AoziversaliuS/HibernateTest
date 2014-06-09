@@ -2,6 +2,7 @@ package many2one;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -21,7 +22,7 @@ public class Room {
 	public int getId() {
 		return id;
 	}
-	@OneToMany(mappedBy="room")//由People类的room属性去匹配
+	@OneToMany(mappedBy="room",cascade={CascadeType.ALL})//由People类的room属性去匹配
 //	@JoinColumn(name="room_id")
 	public List<People> getPeoples() {
 		return peoples;

@@ -1,5 +1,6 @@
 package many2one;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -22,7 +23,9 @@ public class People {
 	public String getName() {
 		return name;
 	}
-	@ManyToOne
+	@ManyToOne(cascade={CascadeType.PERSIST})
+	//只有调用了session.persist()方法之后才能进行级联保存
+	//删除的时候PERSIST不会级联把room删除，但all就会
 	public Room getRoom() {
 		return room;
 	}
