@@ -26,6 +26,11 @@ public class Girl {
 		this.boyFriends = boyFriends;
 	}
 	
+	@Override
+	public String toString() {
+		return "Girl [boyFriends=" + boyFriends + ", id=" + id + ", name="
+				+ name + "]";
+	}
 	@ManyToMany
 	@JoinTable(name="center_table",
 		joinColumns={@JoinColumn(name="girl_id")},//name属性没有提示，不过要用name才行

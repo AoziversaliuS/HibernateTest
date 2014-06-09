@@ -108,18 +108,23 @@ public class PlayerTest {
 	@Test
 	public void testManyToMany(){
 		List<Boy> boys = new ArrayList<Boy>();
-		boys.add(new Boy("boyA"));
-		boys.add(new Boy("boyB"));
-		boys.add(new Boy("boyC"));
-		for(Boy b:boys){
-			session.save(b);
-		}
-		session.save(new Girl("girlA", boys));
+		boys.add((Boy)session.get(Boy.class, 4));
+		boys.add((Boy)session.get(Boy.class, 5));
+		boys.add((Boy)session.get(Boy.class, 6));
+		System.out.println(boys);
+		session.save(new Girl("girlB",boys ));
 	}
 	@Test
 	public void testManyToManyA(){
 		Girl girl = (Girl)session.get(Girl.class, 1);
 		System.out.println(girl.getBoyFriends());
+	}
+	@Test
+	public void testManyToManyB(){
+//		Girl girl = (Girl)session.get(Girl.class, 1);
+//		System.out.println(girl.getBoyFriends());
+		Boy boy = (Boy) session.get(Boy.class, 4);
+		System.out.println(boy.getGirlFriends().get(1).getName());
 	}
 	
 	@Before
