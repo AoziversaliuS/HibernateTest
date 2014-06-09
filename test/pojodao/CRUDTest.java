@@ -45,6 +45,17 @@ public class CRUDTest {
 //		session.delete(p);
 	}
 	
+	@Test
+	public void testSession(){
+		Session s1 = sf.getCurrentSession();
+		System.out.println("s1 = "+s1.hashCode());
+		s1.beginTransaction();
+		s1.getTransaction().commit();
+		Session s2 = sf.getCurrentSession();
+		
+		System.out.println("s2 = "+s2.hashCode());
+	}
+	
 	@BeforeClass
 	public static void init(){
 		Configuration cfg= new Configuration().configure();
