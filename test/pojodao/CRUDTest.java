@@ -44,6 +44,10 @@ public class CRUDTest {
 //		People p = (People)session.get(People.class, 1);
 //		session.delete(p);
 	}
+	@Test
+	public void testHql(){
+//		session.createQuery("delete from Room r where r.id = 2").executeUpdate();
+	}
 	
 	@Test
 	public void testSession(){
