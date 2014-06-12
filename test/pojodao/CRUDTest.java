@@ -17,6 +17,8 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import pojo.Player;
+
 public class CRUDTest {
 	
 	private static SessionFactory sf;
@@ -36,6 +38,16 @@ public class CRUDTest {
 	public void testGet(){
 		Room r = (Room) session.get(Room.class, 1);
 		System.out.println(r.getPeoples().get(0).getName());
+	}
+	@Test
+	public void testLoad(){
+		Player p = (Player) session.get(Player.class, 3);
+		 p.getPet().getName();
+//		 p.getClass();
+		session.getTransaction().commit();
+//		p.getPet();
+		System.out.println(p.getPet());
+//		System.out.println(r.getPeoples().get(0).getName());
 	}
 	@Test
 	public void testDelete(){
@@ -90,7 +102,7 @@ public class CRUDTest {
 	}
 	@After
 	public void after(){
-		session.getTransaction().commit();
+//		session.getTransaction().commit();
 	}
 
 }

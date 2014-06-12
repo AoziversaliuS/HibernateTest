@@ -7,6 +7,7 @@ import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -67,7 +68,7 @@ public class Player {
 	}
 	
 	//单向一对一关联
-	@OneToOne(cascade=CascadeType.REFRESH) 
+	@OneToOne(cascade=CascadeType.REFRESH,fetch=FetchType.LAZY) 
 	public Pet getPet() {
 		return pet;
 	}
