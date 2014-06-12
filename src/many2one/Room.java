@@ -14,6 +14,13 @@ import javax.persistence.OneToMany;
 public class Room {
 
 	private int id;
+	private String roomName;
+	public String getRoomName() {
+		return roomName;
+	}
+	public void setRoomName(String roomName) {
+		this.roomName = roomName;
+	}
 	private List<People> peoples;
 	public Room() {
 		super();

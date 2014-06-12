@@ -26,6 +26,7 @@ public class CRUDTest {
 	public void testSave(){
 		Room r = new Room();
 		People p = new People();
+		r.setRoomName("实验室");
 		p.setRoom(r);
 		p.setName("测试级联保存");
 //		session.save(p);
@@ -33,9 +34,8 @@ public class CRUDTest {
 	}
 	@Test
 	public void testGet(){
-		Room r = (Room) session.get(Room.class, 2);
+		Room r = (Room) session.get(Room.class, 1);
 		System.out.println(r.getPeoples().get(0).getName());
-		
 	}
 	@Test
 	public void testDelete(){
@@ -58,6 +58,19 @@ public class CRUDTest {
 		Session s2 = sf.getCurrentSession();
 		
 		System.out.println("s2 = "+s2.hashCode());
+	}
+	@Test
+	public void testUpdate(){
+		People p = (People) session.get(People.class, 1);
+//		System.out.println(p.getRoom().getRoomName());
+//		session.getTransaction().commit();
+		p.setName("Update测试");
+		session.save(p);
+//		session = sf.getCurrentSession();
+//		p.getRoom().setRoomName("房间");
+//		session.beginTransaction();
+//		session.update(p);
+//		session.getTransaction().commit();
 	}
 	
 	@BeforeClass
