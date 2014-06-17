@@ -72,6 +72,17 @@ public class CRUDTest {
 		System.out.println("s2 = "+s2.hashCode());
 	}
 	@Test
+	public void testSession2(){
+		Session session = sf.getCurrentSession();
+		
+		//事务开启
+		session.beginTransaction();
+		//进行数据库的操作
+		//session.save(),delete等
+		//事务提交
+		session.getTransaction().commit();
+	}
+	@Test
 	public void testUpdate(){
 		People p = (People) session.get(People.class, 1);
 //		System.out.println(p.getRoom().getRoomName());
